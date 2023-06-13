@@ -33,7 +33,6 @@ public class DataSourceTest {
      public void DS_ConnectText() {
          	 logger.debug("ds : " +ds);
      }
-	 
 	 @Test
 	 public void CPTest() {
 	     logger.debug(" @@@@ sqlSession : " + sqlSession);	 
