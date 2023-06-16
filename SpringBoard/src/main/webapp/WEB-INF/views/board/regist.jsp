@@ -10,23 +10,23 @@
 		<h3 class="box-title">ITWILL 게시판 글쓰기</h3>
 	</div>
 
-
-	<form role="form">
+    <!-- /board/regist (post)  -->
+	<form role="form" method="post">
 		<div class="box-body">
 			<div class="form-group">
 				<label for="exampleInputEmail1">제목</label> <input type="text"
-					class="form-control" id="exampleInputEmail1"
+					name="title"class="form-control" id="exampleInputEmail1"
 					placeholder="제목을 입력하세요">
 			</div>
 
 			<div class="form-group">
 				<label for="exampleInputPassword1">이름</label> <input type="text"
-					class="form-control" id="exampleInputPassword1"
+				name="writer" class="form-control" id="exampleInputPassword1"
 					placeholder="이름을 입력하세요">
 			</div>
 		<div class="form-group">
 			<label>내용</label>
-			<textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
+			<textarea class="form-control"  name="content" rows="3" placeholder="Enter ..."></textarea>
 		</div>
 		</div>
 		<div class="box-footer">

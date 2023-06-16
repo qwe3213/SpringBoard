@@ -125,6 +125,14 @@
     <version>5.0.1</version>
 </dependency>
 
+<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+<dependency>
+    <groupId>org.projectlombok</groupId>
+    <artifactId>lombok</artifactId>
+    <version>1.18.28</version>
+    <scope>provided</scope>
+</dependency>
+
 		
 <dependency>
     <groupId>org.bgee.log4jdbc-log4j2</groupId>
