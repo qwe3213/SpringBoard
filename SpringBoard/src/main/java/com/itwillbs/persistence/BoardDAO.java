@@ -19,4 +19,8 @@ public interface BoardDAO {
      
      // 특정 글정보 조회 - R
      public BoardVO readBoard(Integer bno) throws Exception;
-}
+     
+     // 특정 글정보 수정 - U
+     public void updateBoard(BoardVO uvo) throws Exception;
+
+ }

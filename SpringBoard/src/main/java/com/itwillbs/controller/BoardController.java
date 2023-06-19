@@ -139,7 +139,21 @@ public class BoardController {
 		//  /board/modify.jsp (read.jsp 참조)
         		
 	}
-	
+	// http://localhost:8088/board/listALL
+	// 글 정보 수정 (POST) 페이지 처리가 일어나 이동하므로 String 
+	   @RequestMapping(value = "modify", method = RequestMethod.POST)
+	public String updateBoardPOST(/* @ModelAttribute */ BoardVO uvo) throws Exception{
+		   
+		   logger.debug(" updateBoardPOST() 호출 ");
+		   
+		   // 전달된 정보 저장 (수정할 데이터)
+		   logger.debug("vo : " + uvo);
+		   // 서비스 - 디비에 게시판 글내용 수정 동작
+		   service.modifyBoard(uvo);
+		   // 페이지로 이동(리스트)
+		   return "redirect:/board/listALL";
+		   
+		   }
 	
 	
 }// controller

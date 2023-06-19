@@ -58,6 +58,17 @@ public class BoardDAOImpl implements BoardDAO {
 
 	    return sqlSession.selectOne(NAMESPACE+".getBoard",bno);
 	}
+
+	@Override
+	public void updateBoard(BoardVO uvo) throws Exception {
+
+          logger.debug("updateBoard(BoardVO uvo) 호출 ");
+          
+          int result = sqlSession.update(NAMESPACE +".updateBoard",uvo);
+	      if(result == 1) {
+	    	  logger.debug(uvo.getBno() +  "글정보 수정 완료! ");
+	      }
+	}
 	
 	
 

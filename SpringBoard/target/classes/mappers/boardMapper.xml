@@ -39,4 +39,13 @@
        </select>
    
      <!-- 특정 글정보 조회 -->
+    
+    <!-- 특정 글정보 수정 -->
+       <update id="updateBoard">
+         update tbl_board
+         set title=#{title}, writer=#{writer}, content=#{content}
+         where bno =#{bno}
+       </update>
+    <!-- 특정 글정보 수정 -->
+      
   </mapper>

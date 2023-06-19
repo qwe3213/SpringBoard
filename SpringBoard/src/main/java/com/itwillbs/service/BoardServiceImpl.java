@@ -44,6 +44,11 @@ public class BoardServiceImpl implements BoardService{
 		
 		return bdao.readBoard(bno);
 	}
+
+	@Override
+	public void modifyBoard(BoardVO uvo) throws Exception {
+		bdao.updateBoard(uvo);
+	}
 	
 	
 

@@ -18,7 +18,7 @@
     	<div class="box-body">
     	<div class="form-group">
 				<label for="exampleInputEmail1">번 호</label> <input type="text"
-					name="title"class="form-control" id="exampleInputEmail1"
+					name="bno"class="form-control" id="exampleInputEmail1"
 					 value="${vo.bno }" readonly>
 			</div>
 			<div class="form-group">
@@ -35,15 +35,31 @@
 		<div class="form-group">
 			<label>내용</label>
 			<textarea class="form-control"  name="content" rows="3" >${vo.content }</textarea>
-		</div>
-		</div>
+ 		</div>
+
+	</div>
+		</form>
 		<div class="box-footer">
 			<button type="submit" class="btn btn-danger">수정하기</button>
 			<button type="reset" class="btn btn-warning">취소하기</button>
 		</div>
-		</form>
 </div>
 
+<script>
+      $(document).ready(function(){
+    	 
+    	 var formObj = $("#fr");
+         
+    	 $(".btn-danger").click(function(){
+    		// 수정하기 동작   - modify 주소, post 방식
+    	    formObj.attr("method", "post");
+    		formObj.submit(); 
+    		
+    	 });
+         
+      });
+
+</script>
         
 
 <%@ include file="../include/footer.jsp"%>
