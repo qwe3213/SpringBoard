@@ -141,8 +141,9 @@ public class BoardController {
 	}
 	// http://localhost:8088/board/listALL
 	// 글 정보 수정 (POST) 페이지 처리가 일어나 이동하므로 String 
-	   @RequestMapping(value = "modify", method = RequestMethod.POST)
-	public String updateBoardPOST(/* @ModelAttribute */ BoardVO uvo) throws Exception{
+	@RequestMapping(value = "modify", method = RequestMethod.POST)
+	public String updateBoardPOST(RedirectAttributes rttr,
+			/* @ModelAttribute */ BoardVO uvo) throws Exception{
 		   
 		   logger.debug(" updateBoardPOST() 호출 ");
 		   
@@ -150,10 +151,27 @@ public class BoardController {
 		   logger.debug("vo : " + uvo);
 		   // 서비스 - 디비에 게시판 글내용 수정 동작
 		   service.modifyBoard(uvo);
+		   // 상태정보 전달
+		   rttr.addFlashAttribute("result","MODOK");
 		   // 페이지로 이동(리스트)
 		   return "redirect:/board/listALL";
 		   
-		   }
+	 }
+	
+	@RequestMapping(value = "remove", method = RequestMethod.POST)
+	public String removeBoardPOST(RedirectAttributes rttr,
+			@RequestParam("bno") int bno) throws Exception{
+	    logger.debug("remoceBoard() 호출 ");
+
+	    // 전달정보 저장(bno)
+	       logger.debug("dvo : " + bno);
+	    // 서비스 - 글정보 삭제 동작 호출 
+	       service.deleteBoard(bno);
+	    // 상태정보 전달
+	       rttr.addFlashAttribute("result","DELOK");
+	       // 페이지 이동(리스트)
+	       return "redirect:/board/listALL"; 
+	}
 	
 	
 }// controller

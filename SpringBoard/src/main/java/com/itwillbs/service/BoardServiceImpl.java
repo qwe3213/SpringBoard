@@ -49,6 +49,12 @@ public class BoardServiceImpl implements BoardService{
 	public void modifyBoard(BoardVO uvo) throws Exception {
 		bdao.updateBoard(uvo);
 	}
+
+	@Override
+	public void deleteBoard(Integer bno) throws Exception {
+	    bdao.deleteBoard(bno);
+	   
+	}
 	
 	
 

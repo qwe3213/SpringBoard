@@ -23,4 +23,6 @@ public interface BoardDAO {
      // 특정 글정보 수정 - U
      public void updateBoard(BoardVO uvo) throws Exception;
 
+     // 특정 글정보 삭제 - D 
+     public void deleteBoard(Integer bno) throws Exception;
  }

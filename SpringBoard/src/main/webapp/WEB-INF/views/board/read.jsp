@@ -62,6 +62,14 @@
             	    frObj.submit();
             	});
             	
+            	// 삭제하기 버튼
+            	$(".btn-warning").click(function(){
+            		frObj.attr("action" , "/board/remove");
+            		frObj.attr("method","post");
+            		frObj.submit();
+            		
+            	});
+            	
             	
                 // 목록으로 버튼
             	$(".btn-success").click(function(){
