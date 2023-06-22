@@ -37,7 +37,7 @@ $(document).ready(function(){
 	});
 </script>
 <h2>result : ${result }</h2>
-
+ ${pm}
 <!-- 모달창  -->
 <div class="modal modal-info fade" id="modal-info"
      style="display: none;">

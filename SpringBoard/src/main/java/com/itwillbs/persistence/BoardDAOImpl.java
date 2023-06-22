@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.itwillbs.domain.BoardVO;
+import com.itwillbs.domain.PageVO;
 
 @Repository
 public class BoardDAOImpl implements BoardDAO {
@@ -17,7 +18,7 @@ public class BoardDAOImpl implements BoardDAO {
 	@Autowired
 	private SqlSession sqlSession;
 
-	private static final String NAMESPACE = "com.itwillbs.mapper.BoardMapper";
+	private static final String NAMESPACE = "com.itwillbs.mappers.BoardMapper";
 
 	private static final Logger logger = LoggerFactory.getLogger(BoardDAOImpl.class);
 
@@ -37,7 +38,7 @@ public class BoardDAOImpl implements BoardDAO {
 
 		logger.debug("readBoardListAll() 호출 !!!@@");
 
-		return sqlSession.selectList(NAMESPACE + ".listAll");
+		return sqlSession.selectList(NAMESPACE + ".listPage");
 		// selectList = 리스트를 자동으로 보여줌
 	}
 
@@ -85,6 +86,29 @@ public class BoardDAOImpl implements BoardDAO {
 //	  
 //	  if(result == 1) { logger.debug("글정보 삭제 완료오옹"); } }
 //	  
+
+	@Override
+	public List<BoardVO> readBoardListPage(Integer page) throws Exception {
+		
+		logger.debug("페이지ㅣㅣㅣㅣㅣㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ처리@@@@");
+		
+		if(page <= 0) {
+			page = 1;
+		}
+		// 페이지에 따른 위치 인덱스 계산하기
+		// 1 -> 0 , 2 -> 10, 3 -> 20 
+		page = (page -1)*10;
+		return sqlSession.selectList(NAMESPACE+".listPage",page);
+	}
+
+	@Override
+	public List<BoardVO> getBoardListPage(PageVO vo) throws Exception {
+	    logger.debug("getBoardListPage(PageVO) 호출"); 
+
+	    return sqlSession.selectList(NAMESPACE+".listPage", vo);
+	}
+	
+	
 	  
 	 
 }
