@@ -37,4 +37,14 @@ public class HomeController {
 		return "home";
 	}
 	
+	//http://localhost:8088/controller/board
+	@RequestMapping(value ="/board", method = RequestMethod.GET)
+	public String myBoard() {
+		
+		logger.debug("myBoard() 실행 - 연결된 뷰페이지 출력 ");
+		
+		return "board";
+	}
+	
+	
 }

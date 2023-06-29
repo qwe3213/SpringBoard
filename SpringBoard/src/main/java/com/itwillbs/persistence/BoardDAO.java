@@ -32,4 +32,7 @@ public interface BoardDAO {
      
      public List<BoardVO> getBoardListPage(PageVO vo) throws Exception;
      
+     //게시판 총 글개수 계산
+     public int getTotalCount() throws Exception;
+     
 }

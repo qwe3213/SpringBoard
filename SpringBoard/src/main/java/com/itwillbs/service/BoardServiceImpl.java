@@ -21,9 +21,7 @@ public class BoardServiceImpl implements BoardService{
 		//  DAO 객체 필요 => 개체 주입
 		  bdao.createBoard(vo);
 		// DAO - 글정보 저장 기능 호출
-        
-		 
-		
+	
 	}
 
 	@Override
@@ -62,10 +60,10 @@ public class BoardServiceImpl implements BoardService{
 	
 		return bdao.getBoardListPage(vo);
 	}
-	
-	
 
+	@Override
+	public int getTotalCount() throws Exception {
 	
-	
-	
+		return bdao.getTotalCount();
+	}
 }

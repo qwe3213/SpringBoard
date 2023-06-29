@@ -36,15 +36,16 @@ public class PageMaker {
     	startPage
     	  = (endPage - pageBlock) + 1;
     	
-//    	prev = (startPage == 1)? false : true;
+    	int tmpEndpage = (int)Math.ceil(totalCount / (double)pageVO.getPageSize());
+    	if(endPage > tmpEndpage) {
+    		endPage = tmpEndpage;
+    	}
+
+        //   prev = (startPage == 1)? false : true;
     	prev = startPage != 1;
     	
     	next = (endPage * pageVO.getPageSize() >= totalCount)? false : true;
     	
-    	int tmpEndpage = (int)Math.ceil(totalCount / (double)pageVO.getPageSize());
-    	if(endPage > tmpEndpage) {
-    		 endPage = tmpEndpage;
-    	}
     	
     	// 페이징처리 하단 필요한 정보 계산 - 끝
     }

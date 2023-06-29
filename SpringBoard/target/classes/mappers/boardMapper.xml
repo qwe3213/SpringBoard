@@ -55,13 +55,29 @@
      <!-- 특정 글정보 삭제  -->
      
        <!-- 글 목록(페이징) 조회 -->
-     <select id ="listPage" resultType="BoardVO" resultMap="board">
+  <!--    <select id ="listPage" resultType="BoardVO" resultMap="board">
          <![CDATA[ 
          select * from tbl_board 
          where bno > 0  
          order by bno desc, regdate desc 
          limit #{startPage},#{pageSize}
          ]]>
+     </select> -->
+     <!-- 글 목록(페이징) 조회 -->
+        <!-- 글 목록(페이징) 조회 -->
+     <select id ="listPage" resultType="BoardVO" resultMap="board">
+           select * from tbl_board
+          where bno > 0
+          order by bno desc, regdate desc
+          limit 0,10
      </select>
      <!-- 글 목록(페이징) 조회 -->
+ 
+     <!-- 전체 글개수 계산  -->
+     <select id="totalCnt" resultType="int">
+       select count(*) from tbl_board
+     </select>
+     <!-- 전체 글개수 계산  -->
+     
+     
   </mapper>

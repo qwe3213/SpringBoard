@@ -8,39 +8,37 @@
 <h1>/board/listALL.jsp</h1>
 
 <script>
+	// 디비 - 서비스 - 컨트롤러 -> 뷰(jsp) -> JS -> AJAX  
 
-// 디비 - 서비스 - 컨트롤러 -> 뷰(jsp) -> JS -> AJAX  
+	$(document).ready(function() {
 
+		var data = "${result}";
 
-$(document).ready(function(){
-		
-	var data = "${result}";
+		if (data == "CREATEOK") {
+			//		alert(" 글쓰기 성공!");
+			//		$(".modal-body").html("글쓰기 성공!" );	
+			//		$("#modal-info").modal("show");
+			callModal("글쓰기 성공!");
+		}
+		if (data == "MODOK") {
+			callModal("글 수정 성공!");
+		}
+		if (data == "DELOK") {
+			callModal("글 삭제 성공!")
+		}
 
-	if (data == "CREATEOK") {
- //		alert(" 글쓰기 성공!");
-//		$(".modal-body").html("글쓰기 성공!" );	
-//		$("#modal-info").modal("show");
-		callModal("글쓰기 성공!");
-	}
-	if(data == "MODOK"){
-		callModal("글 수정 성공!");
-	 }
-	if(data == "DELOK"){
-		callModal("글 삭제 성공!")
-	}
-	
-	function callModal(txt){
-		
-		$(".modal-body").html(txt);	
-		$("#modal-info").modal("show");
-	}
+		function callModal(txt) {
+
+			$(".modal-body").html(txt);
+			$("#modal-info").modal("show");
+		}
 	});
 </script>
 <h2>result : ${result }</h2>
- ${pm}
+${pm}
 <!-- 모달창  -->
 <div class="modal modal-info fade" id="modal-info"
-     style="display: none;">
+	style="display: none;">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -93,6 +91,29 @@ $(document).ready(function(){
 				</c:forEach>
 			</tbody>
 		</table>
-	</div>
-</div>
+	</div> <!--div box-body  -->
+	<div class="box-footer clearfix">
+		<ul class="pagination pagination-sm no-margin pull-right">
+		     <c:if test="${pm.prev}">
+    			<li><a href="/board/listPage?page=${pm.startPage-1}">«</a></li>
+		     </c:if>
+			
+			<c:forEach begin="${pm.startPage}" 
+			           end="${pm.endPage}" step="1"
+			           var="idx"
+			           >
+			    
+			<li
+			 <c:out value="${pm.pageVO.page == idx? 'class=active':''}" />
+			>
+			<a href="/board/listPage?page=${idx}">${idx}</a>
+			</li>
+			</c:forEach>
+
+			<c:if test="${pm.next && pm.endPage > 0}">
+			<li><a href="/board/listPage?page=${pm.endPage+1}">»</a></li>
+			 </c:if>
+		</ul>
+	</div> 
+</div><!-- div box  -->
 <%@ include file="../include/footer.jsp"%>

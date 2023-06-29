@@ -219,7 +219,8 @@ public class BoardController {
 	    // http://localhost:8088/board/listPage
 		// 게시판 글 목록
 		@RequestMapping(value ="/listPage", method = RequestMethod.GET)
-		public String listPageGET(PageVO vo, HttpSession session , Model model,@ModelAttribute("result") String result) throws Exception{
+		public String listPageGET(PageVO vo, HttpSession session ,
+				Model model,@ModelAttribute("result") String result) throws Exception{
 	        
 			 logger.debug(" listALLGET() 호출 !! ");
 			 logger.debug("result : " + result);
@@ -236,7 +237,7 @@ public class BoardController {
 			 // 페이징처리 (하단부) 정보저장객체
 			 PageMaker pm = new PageMaker();
 			 pm.setPageVO(vo);
-			 pm.setTotalCount(3072);
+			 pm.setTotalCount(service.getTotalCount());
 			 
 			 // 조회수 체크 값
 			 session.setAttribute("checkViewCnt",true );
